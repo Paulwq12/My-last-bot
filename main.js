@@ -210,7 +210,7 @@ XeonBotInc.ev.on('connection.update', async (update) => {
                     break;
             }
         } else if (connection === 'open') {
-          
+          console.log('Connected to whatsapp successfully');
         }
     } catch (err) {
         console.log('Error in connection.update: ' + err);
