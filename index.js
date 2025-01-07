@@ -50,33 +50,6 @@ function checkSession() {
     return fs.existsSync(SESSION_PATH);
 }
 
-function displayMessages() {
-    const messages = [
-        `0|${APP_NAME}  | Getting creds.json from session folder ✅`,
-        `0|${APP_NAME}  | Session downloaded ✅`,
-        `0|${APP_NAME}  | ${APP_NAME} files downloaded successfully ✅`,
-        `0|${APP_NAME}  | Loading all files and folders....✅`,
-        `0|${APP_NAME}  | Files and folders loaded successfully ✅`,
-        `0|${APP_NAME}  | Connecting WhatsApp 🧬...`,
-        `0|${APP_NAME}  | 😼 Installing, PLEASE WAIT A WHILE...`,
-        `0|${APP_NAME}  | ${APP_NAME} Bot connected to WhatsApp ✅`
-    ];
-
-    let totalDelay = 3000; // Start with a delay of 3 seconds
-
-    messages.forEach((message, index) => {
-        setTimeout(() => {
-            console.log(message);
-        }, totalDelay);
-
-        // Increment the delay for each message based on its importance
-        if (message.includes('Session downloaded') || message.includes('Files and folders loaded successfully') || message.includes('Bot connected to WhatsApp ✅')) {
-            totalDelay += 6000; // 6 seconds for critical messages
-        } else {
-            totalDelay += 3000; // Default 3 seconds delay for others
-        }
-    });
-}
 
 // Setup server and port
 function setupServer() {
@@ -137,7 +110,6 @@ function setupServer() {
 
 function start() {
     ensurePermissions();  // Ensure necessary directories exist
-    displayMessages();  // Display the bot setup messages
     
     // Start the server to show bot live message
     setupServer();
